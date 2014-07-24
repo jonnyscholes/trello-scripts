@@ -14,6 +14,5 @@ A place for my various Trello related user scripts to live.
 
 ##Available scripts:
 
-###Markdown in titles - including clickable links
+###Markdown in titles - including clickable links - [Install](https://github.com/jonnyscholes/trello-scripts/raw/master/title-markdown.user.js)
 ![Before and after](https://raw.githubusercontent.com/jonnyscholes/trello-scripts/master/trellothing.png)
-[Install](https://github.com/jonnyscholes/trello-scripts/raw/master/title-markdown.user.js)
