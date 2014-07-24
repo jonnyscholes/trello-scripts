@@ -1,5 +1,6 @@
 Trello Userscripts
 ==================
+A place for my various Trello related user scripts to live.
 
 ##For Firefox:
 - [Install Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
@@ -12,4 +13,7 @@ Trello Userscripts
 - Goto your Tampermonkey dashboard and enable the script
 
 ##Available scripts:
-- [Markdown in titles - including clickable links](https://github.com/jonnyscholes/trello-scripts/raw/master/title-markdown.user.js)
+
+###Markdown in titles - including clickable links
+![Before and after](https://raw.githubusercontent.com/jonnyscholes/trello-scripts/master/trellothing.png)
+[Install](https://github.com/jonnyscholes/trello-scripts/raw/master/title-markdown.user.js)
