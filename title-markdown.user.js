@@ -1,51 +1,13 @@
 // ==UserScript==
-// @name        Trello Title LMarkdown
+// @name        Trello Title Markdown
 // @description Adds various markdown like features - [links], **bold**, *italics* - to Trello card titles. Based on https://gist.github.com/gorbiz/6062481
 // @namespace   https://trello.com
 // @include     https://trello.com/b/*
 // @grant       none
 // ==/UserScript==
  
-function markdownContent(element) {
-    //Add link button, remove from title
-    var url = element.innerHTML.match(/\[(.+?)\]/g);
-
-    if (url) {
-        for (var i = url.length - 1; i >= 0; i--) {
-            var linkElm = document.createElement('a');
-            var cleanUrl = url[i].replace(/\[|\]/g, '');
-
-            linkElm.setAttribute('href', cleanUrl);
-            linkElm.setAttribute('class', 'list-card-title-link');
-            linkElm.setAttribute('style', 'bottom: '+ i * 22 +'px;');
-            linkElm.innerHTML = cleanUrl;
-
-            element.innerHTML = element.innerHTML.replace(/\[(.+?)\]/g, '');
-            element.parentNode.appendChild(linkElm);
-        }
-
-        element.parentNode.setAttribute('style', 'padding-bottom: '+ url.length * 20 +'px;') ;
-    }
-
-
-    //Add bold/italics
-    element.innerHTML = element.innerHTML
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>');
-}
-
-function addCSSRule(sheet, selector, rules, index) {
-    sheet.insertRule ? sheet.insertRule(selector + "{" + rules + "}", index) : sheet.addRule(selector, rules, index);
-}
- 
-function observeAll(observer) {
-    var cards = document.getElementsByClassName('list-card-title');
-    for (var i = 0; i < cards.length; i++) {
-       observer.observe(cards[i], { childList: true });
-    }
-}
-
-window.onload = function(){  
+addLoadEvent(function(){   
+    console.log('Rea');
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
     var observer = new MutationObserver(function(mutation) {
         // Disable the observer as not to trigger it with our changes (and end up in infinite recursion)
@@ -77,6 +39,60 @@ window.onload = function(){
 
     // Apply Markdown when card titles are changed
     observeAll(observer);
-};
+});
+
+function markdownContent(element) {
+    //Add link button, remove from title
+    var url = element.innerHTML.match(/\[(.+?)\]/g);
+
+    if (url) {
+        for (var i = url.length - 1; i >= 0; i--) {
+            var linkElm = document.createElement('a');
+            var cleanUrl = url[i].replace(/\[|\]/g, '');
+
+            linkElm.setAttribute('href', cleanUrl);
+            linkElm.setAttribute('class', 'list-card-title-link');
+            linkElm.setAttribute('style', 'bottom: '+ i * 22 +'px;');
+            linkElm.innerHTML = cleanUrl;
+
+            element.innerHTML = element.innerHTML.replace(/\[(.+?)\]/g, '');
+            element.parentNode.appendChild(linkElm);
+        }
+
+        element.parentNode.setAttribute('style', 'padding-bottom: '+ url.length * 20 +'px;') ;
+    }
+
+
+    //Add bold/italics
+    element.innerHTML = element.innerHTML
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+}
+
+// Helpers
+function addCSSRule(sheet, selector, rules, index) {
+    sheet.insertRule ? sheet.insertRule(selector + "{" + rules + "}", index) : sheet.addRule(selector, rules, index);
+}
+ 
+function observeAll(observer) {
+    var cards = document.getElementsByClassName('list-card-title');
+    for (var i = 0; i < cards.length; i++) {
+       observer.observe(cards[i], { childList: true });
+    }
+}
+
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
 
 
