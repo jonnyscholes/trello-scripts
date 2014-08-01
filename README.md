@@ -14,10 +14,9 @@ A place for my various Trello related user scripts to live.
 
 ##Available scripts:
 
-###Markdown in titles - including clickable links
+###Markdown in titles - including clickable links - [Install](https://github.com/jonnyscholes/trello-scripts/raw/master/title-markdown.user.js)
 ![Before and after](https://raw.githubusercontent.com/jonnyscholes/trello-scripts/master/trellothing.png)
-[Install](https://github.com/jonnyscholes/trello-scripts/raw/master/title-markdown.user.js)
 
-###Colorise cards based on title
+
+###Colorise cards based on title - [Install](https://github.com/jonnyscholes/trello-scripts/raw/master/card-color.user.js)
 ![Before and after](https://raw.githubusercontent.com/jonnyscholes/trello-scripts/master/colorise.png)
-[Install](https://github.com/jonnyscholes/trello-scripts/raw/master/card-color.user.js)
